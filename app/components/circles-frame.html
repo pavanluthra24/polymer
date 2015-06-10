@@ -1,0 +1,76 @@
+<link rel="import"
+      href="../bower_components/polymer/polymer.html">
+
+<dom-module id="circles-frame">
+  <style>
+      button{
+          border-radius: 50px;
+          border: 0 none;
+          padding: 3px 7px 4px;
+          
+      }
+    .gg{
+      float: left;
+      list-style: none;
+      visibility:  hidden;
+      position: absolute;
+      transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      padding: 0;
+    }
+    .poly:hover .gg{
+        visibility:  visible;
+    }
+    .gg li{
+      background-color: #ccc;
+      border-radius: 50px;
+      padding: 3px;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 7px;
+      cursor: pointer;
+    }
+  </style>
+  <template>
+    <div class="poly">
+        <button><i class="glyphicon glyphicon-plus"></i></button>
+      <ul class="gg">
+        <li id="a">a</li>
+        <li id="b">b</li>
+        <li id="c">c</li>
+        <li id="d">d</li>
+      </ul>
+    </div>
+  </template>
+
+
+<script>
+  Polymer({
+    is: "circles-frame",
+    //ready: function(){
+      //  this.show = show.list;
+    //},
+    listeners: {
+        // `click` events on the host are delegated to `clickHandler`
+        'a.tap': 'aTap',
+        'b.tap': 'bTap',
+        'c.tap': 'cTap',
+        'd.tap': 'dTap',
+        //'track': 'raev'
+    },
+    aTap: function(e) {
+      alert("You click on a");
+    },
+    bTap: function(e) {
+      alert("You click on b");
+    },
+    cTap: function(e) {
+      alert("You click on c");
+    },
+    dTap: function(e) {
+      alert("You click on d");
+    }
+  });
+</script>
+</dom-module>
