@@ -3,26 +3,103 @@
 
 <dom-module id="circles-frame">
     <style>
-        button{
-            border-radius: 50px;
-            border: 0 none;
-            padding: 3px 7px 4px;
-            margin-bottom: 10px;
+        .poly{
+            position: fixed;
+            bottom: 15px;
+        }
+        .compose{
+            background-color: #db4437;
+            height: 56px;
+            position: relative;
+            width: 56px;
+            color: #fff;
+        }
+        .compose i{
+            transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
+            -webkit-transition: all 0.3s ease 0s;
+            -o-transition: all 0.3s ease 0s;
+        }
+        .compose:hover i{
+            transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+        }
+        
+        .circle{
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+            -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+            -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+            box-sizing: content-box;
+            outline: medium none;
+            border: medium none;
+            padding: 0;
+            transition: all 150ms ease 0s;
+            -moz-transition: all 150ms ease 0s;
+            -webkit-transition: all 150ms ease 0s;
+            -o-transition: all 150ms ease 0s;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+        }
+        .circle:hover{
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+            -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+            -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
         }
         .gg{
-            float: left;
-            list-style: none;
             visibility:  hidden;
-            position: absolute;
-            transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            -webkit-transition: all 0.3s ease;
+            margin-bottom: 10px;
+            position: relative;
+            transition: all 150ms cubic-bezier(0.25, 0.25, 0, 1) 0s;
+            -moz-transition: all 150ms cubic-bezier(0.25, 0.25, 0, 1) 0s;
+            -webkit-transition: all 150ms cubic-bezier(0.25, 0.25, 0, 1) 0s;
+            -o-transition: all 150ms cubic-bezier(0.25, 0.25, 0, 1) 0s;
+            transform: scale(0);
+            -moz-transform: scale(0);
+            -webkit-transform: scale(0);
+            -ms-transform: scale(0);
             padding: 0;
+            text-align: center;
+            width: 56px;
+        }
+        .a{
+            transition-delay: 90ms;
+            -moz-transition-delay: 90ms;
+            -webkit-transition-delay: 90ms;
+            -o-transition-delay: 90ms;
+        }
+        .b{
+            transition-delay: 60ms;
+            -moz-transition-delay: 60ms;
+            -webkit-transition-delay: 60ms;
+            -o-transition-delay: 60ms;
+        }
+        .c{
+            transition-delay: 30ms;
+            -moz-transition-delay: 30ms;
+            -webkit-transition-delay: 30ms;
+            -o-transition-delay: 30ms;
+        }
+        .d{
+            transition-delay: 0ms;
+            -moz-transition-delay: 0ms;
+            -webkit-transition-delay: 0ms;
+            -o-transition-delay: 0ms;
         }
         .poly:hover .gg{
             visibility: visible;
+            transform: scale(1);
+            -moz-transform: scale(1);
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
         }
-        .gg li{
+        .gg button{
             background-color: #ccc;
             border-radius: 50px;
             padding: 3px;
@@ -35,17 +112,35 @@
     </style>
     <template>
         <div class="poly">
-            <button><i class="glyphicon glyphicon-plus"></i></button>
-            <ul class="gg">
-                <li id="a">a</li>
-                <li id="b">b</li>
-                <li id="c">c</li>
-                <li id="d">d</li>
-            </ul>
+            <div class="a gg">
+                <button id="a" class="circle">
+                    a
+                </button>
+            </div>
+            <div class="b gg">
+                <button id="b" class="circle">
+                    b
+                </button>
+            </div>
+            <div class="c gg">
+                <button id="c" class="circle">
+                    c
+                </button>
+            </div>
+            <div class="d gg">
+                <button id="d" class="circle">
+                    d
+                </button>
+            </div>
+            
+            <button on-mouseover="over" on-mouseout="out" class="compose circle">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
         </div>
     </template>
 
     <script>
+    (function(){
         Polymer({
             is: "circles-frame",
             //ready: function(){
@@ -70,7 +165,14 @@
             },
             dTap: function (e) {
                 alert("You click on d");
+            },
+            over: function(){
+                jQuery('.compose i').toggleClass('glyphicon-plus glyphicon-pencil');
+            },
+            out: function(){
+                jQuery('.compose i').toggleClass('glyphicon-plus glyphicon-pencil');
             }
         });
+    })();
     </script>
 </dom-module>
