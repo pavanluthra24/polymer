@@ -24,7 +24,7 @@
             -webkit-transition: all 0.3s ease 0s;
             -o-transition: all 0.3s ease 0s;
         }
-        .compose:hover i{
+        .compose:hover i, .poly:hover .compose i{
             transform: rotate(360deg);
             -moz-transform: rotate(360deg);
             -webkit-transform: rotate(360deg);
@@ -111,7 +111,7 @@
         }
     </style>
     <template>
-        <div class="poly">
+        <div class="poly" on-mouseover="over" on-mouseout="out">
             <div class="a gg">
                 <button id="a" class="circle">
                     a
@@ -133,7 +133,7 @@
                 </button>
             </div>
             
-            <button on-mouseover="over" on-mouseout="out" class="compose circle">
+            <button class="compose circle">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
         </div>
